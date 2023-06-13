@@ -1,0 +1,23 @@
+ vector <int> max_of_subarrays(int *arr, int n, int k)
+    {
+        multiset<int>s;
+        vector<int>v;
+        for(int i=0;i<k;i++)
+        {
+            s.insert(arr[i]);
+        }
+        auto it=s.end();
+        it--;
+        v.push_back(*it);
+        for(int i=k;i<n;i++)
+        {
+            it=s.find(arr[i-k]);
+            s.erase(it);
+            s.insert(arr[i]);
+            it=s.end();
+            it--;
+            v.push_back(*it);
+        }
+        return v;
+        
+    }
