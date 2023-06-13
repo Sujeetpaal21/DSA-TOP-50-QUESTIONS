@@ -1,0 +1,15 @@
+class Solution{
+  public:
+    int missingNumber(vector<int>& array, int n)
+    {
+        long long sum=0,sumOfall=0;
+        
+        for(int i=0;i<n-1;i++)
+        {
+            sum+=array[i];
+        }
+        sumOfall=n*(n+1)/2;
+        // cout<<sum<<" "<<sumOfall<<endl;
+        return sumOfall-sum;
+    }
+};
