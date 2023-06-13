@@ -1,0 +1,18 @@
+//Question link
+//https://practice.geeksforgeeks.org/problems/anagram-1587115620/1?page=1&curated[]=8&sortBy=submissions
+
+ //Function is to check whether two strings are anagram of each other or not.
+    bool isAnagram(string a, string b)
+    {
+        
+       sort(a.begin(),a.end());
+       sort(b.begin(),b.end());
+       
+       if(a==b)
+       { 
+       return true;
+       }
+       else
+       return false;
+       
+    }
