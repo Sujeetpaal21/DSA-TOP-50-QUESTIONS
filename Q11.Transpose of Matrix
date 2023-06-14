@@ -1,0 +1,14 @@
+//Question link
+//https://practice.geeksforgeeks.org/problems/transpose-of-matrix-1587115621/1?page=1&curated[]=8&sortBy=submissions
+
+ //Function to find transpose of a matrix.
+    void transpose(vector<vector<int> >& matrix, int n)
+    { 
+        for(int row=0;row<n;row++)
+        {
+            for(int col=0;col<row;col++)
+            {
+                swap(matrix[row][col],matrix[col][row]);
+            }
+        } 
+    }
