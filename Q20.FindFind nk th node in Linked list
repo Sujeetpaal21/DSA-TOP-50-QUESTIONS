@@ -1,0 +1,21 @@
+int fractional_node(struct Node *head, int k)
+{
+    Node* temp=head;
+    int cnt=1;
+    while(temp->next!=NULL){
+        temp=temp->next;
+        cnt++;
+    }
+    // cout<<cnt<<endl;
+    if(cnt%k==0){
+        k=(cnt/k)-1;
+    }else{
+        k=(cnt/k);
+    }
+    
+    while(k--)
+    {
+        head=head->next;
+    }
+    return head->data;
+}
