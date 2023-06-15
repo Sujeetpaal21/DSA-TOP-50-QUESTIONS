@@ -1,0 +1,90 @@
+Node* sortedMerge(Node* head1, Node* head2)  
+{  
+    // code here
+    if(head1==NULL) return head2;
+    if(head2==NULL) return head1;
+    // if(head1==NULL && head2==NULL) return NULL;
+    
+    Node* p;
+    Node* q;
+    Node* r;
+    
+    if(head1->data == head2->data)
+    {
+        
+        Node* ptr=head1;
+        Node* qtr=head2;
+        
+        while(ptr->data!=qtr->data)
+        {
+            ptr=ptr->next;
+            qtr=qtr->next;
+        }
+        
+        
+        if(ptr->data > qtr->data)
+        {
+            r=ptr;
+            p=qtr;
+            q=qtr->next;
+        }
+        else
+        {
+            r=qtr;
+            p=ptr;
+            q=ptr->next;
+        }
+        
+    }
+    
+    if(head1->data > head2->data)
+    {
+        r=head1;
+        p=head2;
+        q=head2->next;
+    }
+    else
+    {
+        r=head2;
+        p=head1;
+        q=head1->next;
+    }
+    
+    Node* ans=p;
+    
+    //Soul of code --->>>>
+    
+    while(q!=NULL && r!=NULL)
+    {
+        if(q->data<r->data)
+        {
+            p=p->next;
+            q=q->next;
+        }
+        else
+        {
+            Node* temp=r;
+            r=r->next;
+            
+            p->next=temp;
+            temp->next=q;
+            
+            p=p->next;
+            
+            // Node* trash=new Node(r->data);
+            
+            // p->next=trash;
+            // trash->next=q;
+            
+            // p=p->next;
+            // r=r->next;
+        }
+    }
+    
+    if(q==NULL &&r!=NULL)
+    {
+        p->next=r;
+    }
+    
+    return ans;
+}
