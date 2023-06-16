@@ -1,0 +1,17 @@
+ int dequeue() {
+        while(!input.empty())
+        {
+            int element = input.top();
+            output.push(element);
+            input.pop();
+        }
+        int ans = output.top();
+        output.pop();
+        while(!output.empty()){
+            input.push(output.top());
+            output.pop();
+        }
+        return ans;
+    }void enqueue(int x) {
+        input.push(x);
+    }
