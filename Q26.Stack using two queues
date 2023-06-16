@@ -1,0 +1,34 @@
+
+void QueueStack :: push(int x)
+{
+        // Your Code
+        if(!q1.empty())
+            q1.push(x);
+        else
+            q2.push(x);
+}
+
+
+int QueueStack :: pop()
+{
+    // Your Code  
+    if(q1.empty() && q2.empty())
+        return -1;
+    int val = -1;
+    if(!q1.empty()) {
+        while(!q1.empty()) {
+            val = q1.front();
+            q1.pop();
+            if(!q1.empty())
+                q2.push(val);
+        }
+    } else if(!q2.empty()) {
+        while(!q2.empty()) {
+            val = q2.front();
+            q2.pop();
+            if(!q2.empty())
+                q1.push(val);
+        }
+    }
+    return val;
+}
