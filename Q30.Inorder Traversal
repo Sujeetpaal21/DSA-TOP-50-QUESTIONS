@@ -1,0 +1,48 @@
+class Solution {
+  public:
+    /* Function to return a list containing the inorder traversal of the tree.
+    vector<int> vect;
+    vector<int> inOrder(Node* root) {
+        
+        if(root){
+            inOrder(root->left);
+            vect.push_back(root->data);
+            inOrder(root->right);
+        }
+        return vect;
+    }
+    */
+     vector<int> inOrder(Node* root) {
+        vector<int> ans;
+        if(root == NULL)
+        {
+            return ans;
+        }
+        
+        stack<Node*> st;
+        
+        Node*curr = root;
+        
+        while(true)
+        {
+            while(curr)
+            {
+                st.push(curr);
+                curr = curr->left;
+            }
+            
+            if(curr == NULL && st.empty() == false)
+            {
+                Node*temp = st.top();
+                st.pop();
+                ans.push_back(temp->data);
+                curr = temp->right;
+            }
+            else 
+            {
+                break;
+            }
+        }
+        return ans;
+    }
+};
