@@ -1,0 +1,114 @@
+//User function Template for C++
+
+/* A binary tree node has data, pointer to left child
+   and a pointer to right child  
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+}; 
+void PostOrder(Node* root, vector<int>&vect){
+    if(root==NULL){
+        return;
+    }
+    PostOrder(root->left,vect);
+    PostOrder(root->right,vect);
+    vect.push_back(root->data);
+    
+}
+//Function to return a list containing the postorder traversal of the tree.
+
+vector <int> postOrder(Node* root)
+{
+    vector<int>vect;
+    PostOrder(root,vect);
+//   if(root){
+//       postOrder(root->left);
+//       postOrder(root->right);
+//       vect.push_back(root->data);
+//   }
+  return vect;
+}
+*/
+// vector <int> postOrder(Node* root)
+// {
+  
+//     vector<int> result;
+//     if (root == nullptr) {
+//         return result;
+//     }
+//     stack<Node*> s1, s2;
+//     s1.push(root);
+//     while (!s1.empty()) {
+//         Node* current = s1.top();
+//         s1.pop();
+//         s2.push(current);
+//         if (current->left != nullptr) {
+//             s1.push(current->left);
+//         }
+//         if (current->right != nullptr) {
+//             s1.push(current->right);
+//         }
+//     }
+//     while (!s2.empty()) {
+//         result.push_back(s2.top()->data);
+//         s2.pop();
+//     }
+//     return result;
+// }
+
+
+//using stack
+
+vector<int> postOrder(Node* root) {
+
+    vector<int> result;
+
+    stack<Node*> s;
+
+    Node* current = root;
+
+    while (current != nullptr || !s.empty()) {
+
+        if (current != nullptr) {
+
+            s.push(current);
+
+            current = current->left;
+
+        } else {
+
+            Node* temp = s.top()->right;
+
+            if (temp == nullptr) {
+
+                temp = s.top();
+
+                s.pop();
+
+                result.push_back(temp->data);
+
+                while (!s.empty() && temp == s.top()->right) {
+
+                    temp = s.top();
+
+                    s.pop();
+
+                    result.push_back(temp->data);
+
+                }
+
+            } else {
+
+                current = temp;
+
+            }
+
+        }
+
+    }
+
+    return result;
+
+}
