@@ -1,0 +1,19 @@
+// Function to insert a node in a BST.
+Node* insert(Node* root, int Key) {
+    Node* head=root;
+    Node* prev=NULL;
+    
+    while(root!=NULL){
+        prev=root;
+        if(root->data==Key) return head;
+        else if(root->data < Key) root=root->right; 
+        else if(root->data > Key) root=root->left;
+    }
+    Node* n=new Node(Key);
+    if(prev->data >Key){
+        prev->left=n;
+    }else{
+        prev->right=n;
+    }
+    return head;
+}
