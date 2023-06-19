@@ -1,0 +1,10 @@
+ vector<long long> printFibb(int n) 
+    {
+        vector<long long> vect(n,0);
+        vect[0]=vect[1]=1;
+        
+        for(int i=2;i<n;i++){
+            vect[i]=vect[i-1]+vect[i-2];
+        }
+        return vect;
+    }
